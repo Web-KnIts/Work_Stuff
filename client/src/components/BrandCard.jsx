@@ -22,16 +22,16 @@ const BrandCard = () => {
   return (
     <div className=''>
         <div className='py-8 text-center'>
-          <div className='inline-flex gap-2 items-center mb-12 text-4xl'>
+          {/* <div className='inline-flex gap-2 items-center mb-12 text-4xl'>
             <p className='w-8 sm:w-12 h-[1px] sm:h-[2px] bg-[#414141]'></p>
             <p className='text-black'>Brand's<span className='text-yellow-700 font-medium ml-2'>We Offer</span></p>
             <p className='w-8 sm:w-12 h-[1px] sm:h-[2px] bg-[#414141]'></p>
-          </div> 
+          </div>  */}
           <div className='flex overflow-x-auto justify-between items-center hide-scroll-bar '>
              {
               Brand.map((item,idx)=>{
                   return(
-                  <div className='flex flex-col p-2'>
+                  <div className='flex flex-col p-2' key={idx}>
                     <div className='w-[20vw] h-[18vh] md:w-[22vw] md:h-[23vh]'>
                       <img src={item.img} alt="" className='object-contain w-full h-full'/>
                     </div>

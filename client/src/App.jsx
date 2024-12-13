@@ -6,6 +6,10 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Collections from "./pages/Collections";
+import CategoriesPage from "./pages/Categories";
+import SignInModal from "./pages/SignIn";
+import RegisterModal from "./pages/Register";
+import Footer from "./components/Footer";
 function App() {
   const categories = [{
     main:"Spare by bike",
@@ -26,12 +30,16 @@ function App() {
 ]
   return (
     <>
-    <Navbar categories={categories}/>
+      <Navbar categories={categories}/>
       <Routes>
         <Route path="/" element={<Home categories={categories}/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/collections" element={<Collections/>}/>
+        <Route path="/collections/:subcategory" element={<CategoriesPage/>}/>
+        <Route path="/register" element={<RegisterModal/>}/>
+        <Route path="/signin" element={<SignInModal/>}/>
       </Routes> 
+      <Footer/>
     </>
   );
 }

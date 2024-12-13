@@ -3,19 +3,28 @@ import { useEffect } from 'react';
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
+import { Link } from 'react-router-dom';
 
 const Navbar = ({categories}) => {
     const [showDrop, setShowDrop] = useState(false);
+    useEffect(()=>{
+      setTimeout(()=>{
+        if(showDrop == true)
+        {
+          setShowDrop(false);
+        }
+      },1000*10)
+    },[showDrop])
   return (
    <>
    <div className=''>
    <div className="flex flex-col px-4 font-medium md:px-10 lg:px-20 py-5">
      <div className="flex items-center justify-between md:gap-[30px]  gap-[20px] ">
-        <img
+        <Link to={'/'}><img
           src={"Logo.png"}
           className="w-44 md:w-48 lg:w-60 cursor-pointer"
           alt="Logo"
-        />
+        /></Link>
         <div className="flex-1 relative">
           <input
             type="text"
@@ -48,6 +57,9 @@ const Navbar = ({categories}) => {
               <a to={"/Order"} className="cursor-pointer hover:text-black">
                 Order
               </a>
+              <Link to={"/signin"} className="cursor-pointer hover:text-black">
+                Signin
+              </Link>
               <a to={""} className="cursor-pointer hover:text-black">
                 Logout
               </a>

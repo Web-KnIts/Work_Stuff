@@ -3,17 +3,27 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const CategoriesCard = ({title,subCategories}) => {
-    var c =0;
-    console.log(title,subCategories)
+  var c =0
     var settings = {
-        infinite: false,
-        speed: 500,
-        dots:true,
-        slidesToShow: 6,
-        slidesToScroll: 6,
-        initialSlide: 0,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 6,
+      initialSlide: 0,
+      focusOnSelect: true,
+      dots:true,
+      slidesToScroll: 6,
+      className: "center",
+      centerPadding: "60px",
+      slidesToShow: 6,
+    afterChange: function(index) {
+      console.log(
+        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+      );
+    }
+        ,
         responsive: [
             {
                 breakpoint:1200,
@@ -52,8 +62,8 @@ const CategoriesCard = ({title,subCategories}) => {
 
   return (
     <div className='text-[#707070]'>
-        <div className='w-full mt-12 flex justify-between'>
-            <h1 className='text-3xl uppercase font-bold'>{title}</h1>
+        <div className='w-auto mt-12 flex justify-between'>
+            <h1 className='text-xl sm:text-2xl md:text-3xl uppercase font-bold'>{title}</h1>
             <Link to={'/collections'}>< p className='text-blue-500 text-base'>view all ...</p></Link>
         </div>
        <div className='py-7 slider-container'>
@@ -63,9 +73,9 @@ const CategoriesCard = ({title,subCategories}) => {
               c++;
                 return(
                     <>
-                    <div key={idx} className='p-4 flex flex-col justify-center items-center'>
+                    <div key={idx} className='p-4 flex flex-col justify-center items-center ml-4'>
                         <div className='p-4 bg-white rounded-full overflow-hidden'>
-                        <div className='md:w-[160px] md:h-[160px] w-[140px] h-[140px] bg-zinc-500 rounded-full p-4 hover:scale-105'>
+                        <div className='md:w-[160px] md:h-[160px] w-[120px] h-[120px] bg-zinc-500 rounded-full p-4 hover:scale-105'>
                          
                         </div>
                         </div>

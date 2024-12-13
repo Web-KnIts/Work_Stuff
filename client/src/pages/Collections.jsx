@@ -1,6 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Collections = () => {
+    const categoriesOfCollection = {
+
+    }
     var c = 0
   return (
     <div className='bg-zinc-200 w-full'>
@@ -17,7 +21,7 @@ const Collections = () => {
                 c++;   
             return (
                 <div className='h-[30vh] bg-black rounded-2xl transition-opacity hover:opacity-70 flex items-center justify-center'>
-                    <p className='text-white'>subCat - {c}</p>
+                    <Link to={'/collections/subcat-'+c}><p className='text-white'>subCat - {c}</p></Link>
                 </div>
             )
             })}
