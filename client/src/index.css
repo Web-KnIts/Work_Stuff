@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+p,h1,h2,h3,h4,h5{
+  color: black;
+}
+
 .hide-scroll-bar::-webkit-scrollbar{
     display: none;
 }
@@ -13,6 +17,8 @@
 .slick-prev{
   display: none;
 }
+
+
 
 .slick-next{
   display: none;
@@ -36,4 +42,52 @@
     top: -15px !important;  
     display: none;  
   }
-  
+
+/* Navbar Styles */
+.navbar {
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: white;
+  padding: 16px 24px;
+  border-top: 1px solid #e5e5e5;
+  /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); */
+  border-radius: 12px;
+}
+
+.navbar a {
+  font-size: 18px;
+  color: #4a4a4a;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease, border 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #007bff;
+}
+
+.navbar a.active {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #007bff;
+  transition: width 0.3s ease-in-out;
+}
+
+.navbar a.active::after {
+  width: 100%;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}

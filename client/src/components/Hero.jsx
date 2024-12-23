@@ -8,7 +8,7 @@ const images = [
 
 function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [time,setTime] = useState(6000)
+  const [time,setTime] = useState(1500)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
@@ -18,7 +18,7 @@ function Hero() {
   }, []);
   return (
     <div className="relative mx-auto">
-      <div className="relative">
+      <div className="relative transition-all duration-500 ease-in-out">
         <img
           src={images[currentIndex]}
           alt={`carousel-image-${currentIndex}`}
@@ -29,7 +29,7 @@ function Hero() {
         {
             images.map((_,id)=>{
                 return (
-                   <span className={`w-3 h-3 rounded-full ${id === currentIndex?"bg-gray-600":"bg-white "} transition-all`} onClick={()=>{setCurrentIndex(id);setTime(5000)}}/> 
+                   <span key={id} className={`w-3 h-3 rounded-full ${id === currentIndex?"bg-gray-600":"bg-white "} transition-all`} onClick={()=>{setCurrentIndex(id);setTime(5000)}}/> 
                 )
             })
         }

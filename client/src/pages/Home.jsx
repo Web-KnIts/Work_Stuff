@@ -2,25 +2,31 @@ import React from 'react'
 import Hero from '../components/Hero'
 import BrandCard from '../components/BrandCard'
 import CategoriesCard from '../components/CategoriesCard'
-import OurPolicy from '../components/OurPolicy'
+import { useEffect } from 'react'
 
-const Home = ({categories}) => {
+const Home = ({newCategoriesData}) => {
+
+  const newData = Object.entries(newCategoriesData).map(([key,val])=>{
+  return {
+    name:key,
+    value:val
+  }
+  })
   return (
     <>
      <Hero/>
-     <div className='w-full bg-zinc-200 overflow-x-hidden'>
+     <div className='w-full bg-zinc-200 overflow-x-hidden py-10 sm:py-0'>
         <div className='w-[90%] mx-auto '>
-        <BrandCard/>
+        {/* <BrandCard/> */}
         {
-          categories.map((item,idx)=>{           
-            return item.subCategories.length > 0 && (
-              <CategoriesCard title={item.main} subCategories={item.subCategories}/>
+          newData.map((item,idx)=>{           
+            return item.value.length > 0 && (
+              <CategoriesCard title={item.name} subCategories={item.value} key={idx}/>
             )
           })
         }
         </div>
      </div>
-        <OurPolicy/>
     </>
   )
 }

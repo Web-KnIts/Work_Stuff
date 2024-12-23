@@ -1,65 +1,40 @@
 import React from "react";
 import { useState } from "react";
+import { IoIosArrowForward } from "react-icons/io";
 
-const NavMenuDropDown = ({title,subcategory,idx}) => {
+const NavMenuDropDown = ({navDataTest}) => {
   const [visible, setVisible] = useState(false);
-  const categories = [
-    {
-      title:"Category-1",
-      subcategory:new Array(5).fill(10)
-    },
-    {
-      title:"Category-2",
-      subcategory:new Array(5).fill(10)
-    },
-    {
-      title:"Category-3",
-      subcategory:new Array(5).fill(10)
-    },
-    {
-      title:"Category-4",
-      subcategory:new Array(5).fill(10)
-    },
-    {
-      title:"Category-5",
-      subcategory:new Array(5).fill(10)
-    },
-    {
-      title:"Category-6",
-      subcategory:new Array(5).fill(10)
-    },
-    {
-      title:"Category-7",
-      subcategory:new Array(5).fill(10)
-    }
-  ]
+  const key = Object.keys(navDataTest)
+  console.log(navDataTest[`${key[0]}`])
   return (
-      // <div>
-      //   <div className="text-white text-lg flex gap-2 items-center h">
-      //     {title}
-      //    {subcategory && <span
-      //       className={`py-2 mt-1 ${
-      //         visible ? " rotate-90" : " rotate-180"
-      //       } transition-all`}
-      //       onClick={() => setVisible((prev) => !prev)}
-      //     >
-      //       <img src="dropdown_icon.png" alt="" className="w-2" />
-      //     </span>}
-      //   </div>
-      //   {
-      //       visible &&
-      //       <div className="absolute w-[fit-content] z-10 px-3 py-2 top-[46px] bg-zinc-700 text-white shadow-sm" key={idx}>
-      //           {
-      //               subcategory?.map((item,idx)=>{
-      //                 return (
-      //                   <li>{item}</li>
-      //                 )  
-      //               })
-      //           }
-      //       </div>
-      //   }
-      // </div>
       <>
+      <div className="bg-white border-t-2 hidden lg:block">
+            <nav className="flex flex-wrap mx-auto gap-5 text-[16px] px-5 py-5">      
+                  <div className='relative'>
+                    <div className="flex justify-center items-center gap-2 transition-[color] duration-300 ease-in-out hover:text-blue-500" >{key[0]}
+                    <span className="mt-1 rotate-90">{<IoIosArrowForward/>}</span>
+                    </div>
+                    {/* <div className="px-5 py-4 absolute bg-zinc-400">
+                        {
+                          
+                        }
+                    </div> */}
+                  </div>
+                  <div className='relative'>
+                    <div className="flex justify-center items-center gap-2 transition-[color] duration-300 ease-in-out hover:text-blue-500" >{key[1]}
+                    <span className="mt-1 rotate-90">{<IoIosArrowForward/>}</span>
+                    </div>
+                  </div>
+                  <div className='relative'>
+                    <div className="flex justify-center items-center gap-2 transition-[color] duration-300 ease-in-out hover:text-blue-500" >{key[2]}
+                    <span className="mt-1 rotate-90">{<IoIosArrowForward/>}</span>
+                    </div>
+                  </div>
+              <div>
+                About Us
+              </div>      
+            </nav>
+        </div>
       </>
   );
 };

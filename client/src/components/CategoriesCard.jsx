@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const CategoriesCard = ({title,subCategories}) => {
+const CategoriesCard = ({title,subCategories,mainCat}) => {
   var c =0
     var settings = {
       infinite: true,
@@ -18,24 +18,18 @@ const CategoriesCard = ({title,subCategories}) => {
       className: "center",
       centerPadding: "60px",
       slidesToShow: 6,
-    afterChange: function(index) {
-      console.log(
-        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-      );
-    }
-        ,
         responsive: [
             {
-                breakpoint:1200,
+                breakpoint:1280,
                 settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 6,
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
                     infinite: true,
                     dots: true
                   }
             },
             {
-              breakpoint: 1024,
+              breakpoint: 1080,
               settings: {
                 slidesToShow: 4,
                 slidesToScroll: 4,
@@ -63,8 +57,8 @@ const CategoriesCard = ({title,subCategories}) => {
   return (
     <div className='text-[#707070]'>
         <div className='w-auto mt-12 flex justify-between'>
-            <h1 className='text-xl sm:text-2xl md:text-3xl uppercase font-bold'>{title}</h1>
-            <Link to={'/collections'}>< p className='text-blue-500 text-base'>view all ...</p></Link>
+            <h1 className='text-xl md:text-2xl uppercase font-bold'>{title}</h1>
+            <Link to={'/collections'}>< p className='text-blue-500 text-base'>view</p></Link>
         </div>
        <div className='py-7 slider-container'>
        <Slider {...settings}>
@@ -72,16 +66,16 @@ const CategoriesCard = ({title,subCategories}) => {
             subCategories.map((item,idx)=>{
               c++;
                 return(
-                    <>
-                    <div key={idx} className='p-4 flex flex-col justify-center items-center ml-4'>
+                    <div key={idx}> 
+                    <div className='p-4 flex flex-col justify-center items-center ml-4'>
                         <div className='p-4 bg-white rounded-full overflow-hidden'>
-                        <div className='md:w-[160px] md:h-[160px] w-[120px] h-[120px] bg-zinc-500 rounded-full p-4 hover:scale-105'>
-                         
+                        <div className='md:w-[160px] md:h-[160px] w-[120px] h-[120px] bg-zinc-white b rounded-full p-4 hover:scale-105 overflow-hidden'>
+                        <Link draggable={false} to={`/collections/${item}`} className='w-full h-full'><img src="https://c8.alamy.com/comp/D4GMKM/car-clutch-plate-isolated-on-a-white-background-3d-render-D4GMKM.jpg" alt="" className='w-full h-full'/></Link>
                         </div>
                         </div>
-                        <p>Text-{c}</p>
+                        <p className='mt-2 text-center'>{item}</p>
                     </div> 
-                    </>
+                    </div>
                 )
             })
         }
